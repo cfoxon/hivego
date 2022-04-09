@@ -2,8 +2,6 @@ module hive-go
 
 go 1.17
 
-replace github.com/cfoxon/jsonrpc2client => ../jsonrpc2client
-
 require (
 	github.com/cfoxon/jsonrpc2client v0.0.0-00010101000000-000000000000
 	github.com/decred/base58 v1.0.4
