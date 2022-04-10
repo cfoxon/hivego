@@ -1,4 +1,4 @@
-module hive-go
+module hivego
 
 go 1.17
 
