@@ -69,7 +69,7 @@ func hashTx(tx []byte) []byte {
     return digest.Sum(nil)
 }
 
-func signDigest(digest []byte, wif *string) ([]byte, error) {
+func SignDigest(digest []byte, wif *string) ([]byte, error) {
     pk, _,  err := gphBase58CheckDecode(*wif)
     if err != nil {
         return nil, err
