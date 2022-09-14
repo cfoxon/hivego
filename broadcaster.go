@@ -58,7 +58,7 @@ func (h *HiveRpcNode) broadcast(ops []hiveOperation, wif *string) (string, error
 
     digest := hashTxForSig(message)
     txId, _ := tx.generateTrxId()
-    sig, err := signDigest(digest, wif)
+    sig, err := SignDigest(digest, wif)
     if err != nil {
         return "", err
     }
