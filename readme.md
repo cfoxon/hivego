@@ -5,7 +5,7 @@ At this time, there are only a few functions from the client. More will be added
 ### Example usage:
 create a client:
 ```
-hrpc := hivego.NewHiveRpc("https://api.myHiveBlockcchainNode.com")
+hrpc := hivego.NewHiveRpc("https://api.myHiveBlockchainNode.com")
 ```
 
 submit a custom json tx:

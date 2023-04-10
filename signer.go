@@ -70,13 +70,13 @@ func hashTx(tx []byte) []byte {
 }
 
 func SignDigest(digest []byte, wif *string) ([]byte, error) {
-	pk, _, err := GphBase58CheckDecode(*wif)
+	keyPair, err := KeyPairFromWif(*wif)
+
 	if err != nil {
 		return nil, err
 	}
-	privKey, _ := secp256k1.PrivKeyFromBytes(pk)
 
-	return secp256k1.SignCompact(privKey, digest, true)
+	return secp256k1.SignCompact(keyPair.PrivateKey, digest, true)
 }
 
 func GphBase58CheckDecode(input string) ([]byte, [1]byte, error) {
