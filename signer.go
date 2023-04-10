@@ -7,9 +7,10 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
-	"github.com/decred/base58"
-	"github.com/decred/dcrd/dcrec/secp256k1"
 	"time"
+
+	"github.com/decred/base58"
+	"github.com/decred/dcrd/dcrec/secp256k1/v2"
 )
 
 type signingDataFromChain struct {
