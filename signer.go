@@ -7,9 +7,10 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
-	"github.com/decred/base58"
-	"github.com/decred/dcrd/dcrec/secp256k1"
 	"time"
+
+	"github.com/decred/base58"
+	"github.com/decred/dcrd/dcrec/secp256k1/v2"
 )
 
 type signingDataFromChain struct {
@@ -69,13 +70,13 @@ func hashTx(tx []byte) []byte {
 }
 
 func SignDigest(digest []byte, wif *string) ([]byte, error) {
-	pk, _, err := GphBase58CheckDecode(*wif)
+	keyPair, err := KeyPairFromWif(*wif)
+
 	if err != nil {
 		return nil, err
 	}
-	privKey, _ := secp256k1.PrivKeyFromBytes(pk)
 
-	return secp256k1.SignCompact(privKey, digest, true)
+	return secp256k1.SignCompact(keyPair.PrivateKey, digest, true)
 }
 
 func GphBase58CheckDecode(input string) ([]byte, [1]byte, error) {

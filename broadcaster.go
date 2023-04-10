@@ -69,7 +69,7 @@ func (h *HiveRpcNode) broadcast(ops []hiveOperation, wif *string) (string, error
 	var params []interface{}
 	params = append(params, tx)
 
-	if h.NoBroadcast == false {
+	if !h.NoBroadcast {
 		q := hrpcQuery{"condenser_api.broadcast_transaction", params}
 
 		res, err := h.rpcExec(h.address, q)

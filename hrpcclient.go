@@ -3,9 +3,10 @@ package hivego
 import (
 	"encoding/json"
 	"errors"
-	"github.com/cfoxon/jsonrpc2client"
 	"log"
 	"strconv"
+
+	"github.com/cfoxon/jsonrpc2client"
 )
 
 type HiveRpcNode struct {
@@ -104,9 +105,7 @@ func (h *HiveRpcNode) rpcExecBatchFast(endpoint string, queries []hrpcQuery) ([]
 	}
 
 	var batchResult [][]byte
-	for _, resp := range resps {
-		batchResult = append(batchResult, resp)
-	}
+	batchResult = append(batchResult, resps...)
 
 	return batchResult, nil
 }
